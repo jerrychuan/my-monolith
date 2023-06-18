@@ -1,0 +1,108 @@
+spring:
+  # sentinel 配置
+  #  cloud:
+  #    sentinel:
+  #      transport:
+  #        dashboard: localhost:8080
+  #        heartbeat-interval-ms: 500
+  #        eager: true
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/${spring.application.name}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+          username: root
+          password: 123456
+          driverClassName: com.mysql.cj.jdbc.Driver
+      druid:
+        # 初始化连接大小
+        initial-size: 20
+        #最大连接池数量
+        max-active: 500
+        # 最小连接池数量
+        min-idle: 20
+        # 配置获取连接等待超时的时间 单位毫秒
+        max-wait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        time-between-eviction-runs-millis: 5000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        min-evictable-idle-time-millis: 60000
+        # 测试连接
+        validation-query: select 1
+        # 申请连接的时候检测，建议配置为true，不影响性能，并且保证安全性
+        test-while-idle: true
+        # 获取连接时执行检测，建议关闭，影响性能
+        test-on-borrow: false
+        # 归还连接时执行检测，建议关闭，影响性能
+        test-on-return: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        pool-prepared-statements: true
+        #配置监控统计拦截器 防火墙 日志配置
+        #      stat监控数据库性能
+        #      wall  用于防火墙
+        #      日志 slf4j logback
+        #      log4j
+        # 配置多个英文逗号分隔
+        filters: stat,slf4j,wall
+        max-pool-prepared-statement-per-connection-size: 20
+        stat:
+          merge-sql: true
+          log-slow-sql: true
+          # SQL慢的标准，单位毫秒
+          slow-sql-millis: 300
+        slf4j:
+          enable: true
+          statement-executable-sql-log-enable: true
+        wall:
+          comment-allow: true
+          multi-statement-allow: true
+          none-base-statement-allow: true
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 192.168.1.204
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password: Joytime@123
+    # 连接超时时间（毫秒）
+    timeout: 5000
+    # 数据缓存时间（秒）
+    default-expiration: 3600
+    lettuce:
+      pool:
+        max-active:  100 # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 100 # 连接池中的最大空闲连接
+        min-idle: 50 # 连接池中的最小空闲连接
+        max-wait: 6000 # 连接池最大阻塞等待时间（使用负值表示没有限制）
+
+mybatis-plus:
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    # Sequence序列接口实现类配置
+    #key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+    #逻辑删除配置
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+    #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.springboot.xxx
+    #自定义SQL注入器
+    #sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    configuration:
+      map-underscore-to-camel-case: true
+      cache-enabled: false
+      call-setters-on-nulls: true
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      # spring boot集成mybatis的方式打印sql
+      # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
