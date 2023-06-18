@@ -58,25 +58,6 @@ spring:
           comment-allow: true
           multi-statement-allow: true
           none-base-statement-allow: true
-  redis:
-    # Redis数据库索引（默认为0）
-    database: 0
-    # Redis服务器地址
-    host: 192.168.1.204
-    # Redis服务器连接端口
-    port: 6379
-    # Redis服务器连接密码（默认为空）
-    password: Joytime@123
-    # 连接超时时间（毫秒）
-    timeout: 5000
-    # 数据缓存时间（秒）
-    default-expiration: 3600
-    lettuce:
-      pool:
-        max-active:  100 # 连接池最大连接数（使用负值表示没有限制）
-        max-idle: 100 # 连接池中的最大空闲连接
-        min-idle: 50 # 连接池中的最小空闲连接
-        max-wait: 6000 # 连接池最大阻塞等待时间（使用负值表示没有限制）
 
 mybatis-plus:
   global-config:

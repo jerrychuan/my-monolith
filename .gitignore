@@ -1,0 +1,5 @@
+# 项目排除路径
+/mystall-admin/target/
+/mystall-common/target/
+/mystall-modules/target/
+/mystall-system/target/
