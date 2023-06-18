@@ -6,6 +6,10 @@ import com.mystall.system.mapper.SysPayConfigMapper;
 import com.mystall.system.service.ISysPayConfigService;
 import org.springframework.stereotype.Service;
 
+/**
+ * 支付配置
+ * @author fuchuan
+ */
 @Service
 public class SysPayConfigServiceImpl extends ServiceImpl<SysPayConfigMapper, SysPayConfigDO> implements ISysPayConfigService {
 }
