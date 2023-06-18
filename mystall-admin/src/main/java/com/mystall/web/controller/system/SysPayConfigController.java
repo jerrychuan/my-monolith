@@ -58,7 +58,6 @@ public class SysPayConfigController {
 
         SysPayConfigDO info = new SysPayConfigDO();
         info.setId(SysPayConfigDO.getId());
-        info.setPayCatCode(SysPayConfigDO.getPayCatCode());
         iSysPayConfigService.updateById(info);
     }
 
