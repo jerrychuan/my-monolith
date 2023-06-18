@@ -6,6 +6,10 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 支付配置
+ * @author fuchuan
+ */
 @Data
 @TableName("sys_pay_config")
 public class SysPayConfigDO extends BaseDO implements Serializable {
