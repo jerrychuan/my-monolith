@@ -9,10 +9,6 @@ public class IdUtils {
 
     /**
      * 描述: IdGenerateConfig中创建这个方法，其他地方请勿使用
-     *
-     * @return
-     * @Author chenziwu
-     * @Date 2021/5/8 9:27
      * @program:[snowflake]
      */
     public IdUtils(Snowflake snowflake) {
@@ -21,10 +17,6 @@ public class IdUtils {
 
     /**
      * 描述: 快速创建id   用于主键生成
-     *
-     * @return java.lang.Long
-     * @Author chenziwu
-     * @Date 2021/5/8 9:27
      * @program:[]
      */
     public static Long getFastId() {
